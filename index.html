@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convo Chat Widget</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Main toggle button to open/close the chat widget -->
+    <button id="chat-toggle-button">🤖</button>
+    
+    <!-- Main chat widget container (hidden by default) -->
+    <div id="chat-widget">
+        <!-- Widget header -->
+        <div class="chat-header">
+            <h3>Convo Chat</h3>
+        </div>
+        
+        <!-- Message container for displaying chat bubbles -->
+        <div id="message-container"></div>
+        
+        <!-- Chat form at the bottom -->
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- Include the widget JavaScript -->
+    <script src="./widget.js"></script>
+</body>
+</html>
