@@ -1,0 +1,40 @@
+# Docker Compose file for the Convo project
+# This file defines and runs multi-container Docker applications
+# Version 3.8 provides good compatibility and feature support
+version: '3.8'
+
+# Services section defines all the containers that make up our application
+services:
+  # Backend service definition
+  backend:
+    # Build configuration - tells Docker Compose how to build our service
+    build:
+      # Context is the directory containing our Dockerfile
+      # This points to the convo_backend directory where our Dockerfile is located
+      context: ./convo_backend
+      # Dockerfile name (optional since 'Dockerfile' is the default name)
+      dockerfile: Dockerfile
+    
+    # Port mapping: host_port:container_port
+    # This maps port 8000 on your local machine to port 8000 inside the container
+    # You'll be able to access your FastAPI app at http://localhost:8000
+    ports:
+      - "8000:8000"
+    
+    # Volume mapping for development convenience
+    # This maps your local convo_backend directory to /app inside the container
+    # Benefits:
+    # - Any changes you make to your code locally will be immediately reflected in the container
+    # - Enables hot-reloading during development (no need to rebuild the image)
+    # - You can edit files on your host machine using your preferred editor
+    volumes:
+      - ./convo_backend:/app
+    
+    # Environment variables (optional - can be used for configuration)
+    # environment:
+    #   - DEBUG=1
+    #   - ENVIRONMENT=development
+    
+    # Restart policy - automatically restart the container if it stops
+    # 'unless-stopped' means it will restart unless you explicitly stop it
+    restart: unless-stopped
